@@ -1,0 +1,30 @@
+name: Dynawo omc
+
+on: [push]
+
+defaults:
+  run:
+    shell: bash
+jobs:
+  macos:
+    name: MacOS
+    runs-on: macos-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v1
+
+      - name: Install
+        run: |
+          git clone https://github.com/dynawo/dynawo.git
+          cd dynawo
+          curl -L https://github.com/gautierbureau/dynawo-macos-omc/releases/download/test/Dynawo-OpenModelica-MacOS.zip -o Dynawo-OpenModelica-MacOS.zip
+          unzip Dynawo-OpenModelica-MacOS.zip
+          export DYNAWO_HOME=$(pwd)
+          export DYNAWO_SRC_OPENMODELICA=$DYNAWO_HOME/OpenModelica-Source
+          export DYNAWO_INSTALL_OPENMODELICA=$DYNAWO_HOME/OpenModelica
+          export DYNAWO_LOCALE=en_GB
+          export DYNAWO_NB_PROCESSORS_USED=4
+          export DYNAWO_BUILD_TYPE=Release
+          export DYNAWO_CXX11_ENABLED=YES
+          export DYNAWO_COMPILER=CLANG
+          ./util/envDynawo.sh build-user
