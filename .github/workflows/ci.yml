@@ -27,4 +27,7 @@ jobs:
           export DYNAWO_BUILD_TYPE=Release
           export DYNAWO_CXX11_ENABLED=YES
           export DYNAWO_COMPILER=CLANG
+          export DYNAWO_RESULTS_SHOW=false
           ./util/envDynawo.sh build-user
+          ./util/envDynawo.sh build-tests
+          ./util/envDynawo.sh nrt
