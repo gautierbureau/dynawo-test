@@ -1,4 +1,4 @@
-name: Dynawo omc
+name: Dynawo master
 
 on: [push]
 
