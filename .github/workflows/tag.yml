@@ -30,6 +30,7 @@ jobs:
           export DYNAWO_CXX11_ENABLED=YES
           export DYNAWO_COMPILER=CLANG
           export DYNAWO_RESULTS_SHOW=false
+          sed -i '' 's/-DENABLE_OPENSSL=OFF/-DENABLE_OPENSSL=OFF -DENABLE_ZSTD=OFF/' dynawo/3rdParty/CMakeLists.txt
           sed -i '' 's/|| error_exit "Copy of.*//' util/envDynawo.sh
           ./util/envDynawo.sh build-user
           ./util/envDynawo.sh distrib-omc
