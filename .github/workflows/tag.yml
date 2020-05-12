@@ -30,6 +30,7 @@ jobs:
           export DYNAWO_CXX11_ENABLED=YES
           export DYNAWO_COMPILER=CLANG
           export DYNAWO_RESULTS_SHOW=false
+          sed -i 's/|| error_exit "Copy of.*//' ./util/envDynawo.sh
           ./util/envDynawo.sh build-user
           ./util/envDynawo.sh distrib-omc
           version=$(./util/envDynawo.sh version | cut -f1 -d' ')
