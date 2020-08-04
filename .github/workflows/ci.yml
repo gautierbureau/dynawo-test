@@ -18,6 +18,7 @@ jobs:
 
       - name: Install
         run: |
+          ln -s /usr/local/bin/gfortran-9 /usr/local/bin/gfortran
           git clone https://github.com/dynawo/dynawo.git
           cd dynawo
           curl -L https://github.com/gautierbureau/dynawo-macos-omc/releases/download/test/Dynawo-OpenModelica-MacOS.zip -o Dynawo-OpenModelica-MacOS.zip
