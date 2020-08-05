@@ -34,6 +34,8 @@ jobs:
           export DYNAWO_RESULTS_SHOW=false
           # export VERBOSE=1
           sed -i '' 's/-DCMAKE_SKIP_BUILD_RPATH=True//' dynawo/sources/ModelicaCompiler/DYNCompileModelicaModel.cpp
+          sed -i '' '61d' dynawo/sources/Simulation/CMakeLists.txt
+          sed -i '' '36a libZIP::libZIP' dynawo/sources/Simulation/CMakeLists.txt
           ./util/envDynawo.sh build-user
           # cat /Users/runner/work/dynawo-test/dynawo-test/dynawo/build/clang11.0.3/master/Debug-cxx11/shared/dynawo/sources/Models/Modelica/P/EventQuadripoleConnection.log
           # echo
@@ -49,7 +51,7 @@ jobs:
           # exit 1
           #./util/envDynawo.sh build-tests
           #./util/envDynawo.sh nrt
-          otool -L /Users/runner/work/dynawo-test/dynawo-test/dynawo/install/clang11.0.3/HEAD/Release-cxx11/shared/dynawo/bin/dynawo
+          otool -L /Users/runner/work/dynawo-test/dynawo-test/dynawo/install/clang11.0.3/master/Debug-cxx11/shared/dynawo/bin/dynawo
           ./util/envDynawo.sh distrib-omc
           version=$(./util/envDynawo.sh version | cut -f1 -d' ')
           asset_id=$(curl -s -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' --request GET https://api.github.com/repos/gautierbureau/dynawo-test/releases/tags/test | grep -B 2 -m 1 Dynawo_MacOS_master.zip | grep '"id"' | awk '{print $2}' | tr -d ',')

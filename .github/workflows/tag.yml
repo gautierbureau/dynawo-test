@@ -34,6 +34,8 @@ jobs:
           #sed -i '' 's/-DENABLE_OPENSSL=OFF/-DENABLE_OPENSSL=OFF -DENABLE_ZSTD=OFF/' dynawo/3rdParty/CMakeLists.txt
           #sed -i '' 's/|| error_exit "Copy of.*//' util/envDynawo.sh
           sed -i '' 's/-DCMAKE_SKIP_BUILD_RPATH=True//' dynawo/sources/ModelicaCompiler/DYNCompileModelicaModel.cpp
+          sed -i '' '61d' dynawo/sources/Simulation/CMakeLists.txt
+          sed -i '' '36a libZIP::libZIP' dynawo/sources/Simulation/CMakeLists.txt
           ./util/envDynawo.sh build-user
           #cat /Users/runner/work/dynawo-test/dynawo-test/dynawo/build/clang11.0.3/master/Debug-cxx11/shared/dynawo/sources/Models/Modelica/P/EventQuadripoleConnection.log
           #exit 1
@@ -53,7 +55,7 @@ jobs:
           find lib -name "libsundials*" -exec rm -f '{}' \;
           find lib -name "libumfpack*" -exec rm -f '{}' \;
           find lib -name "libzlib*" -exec rm -f '{}' \;
-          cd
+          cd -
           otool -L /Users/runner/work/dynawo-test/dynawo-test/dynawo/install/clang11.0.3/HEAD/Release-cxx11/shared/dynawo/bin/dynawo
           ./util/envDynawo.sh distrib-omc
           version=$(./util/envDynawo.sh version | cut -f1 -d' ')
