@@ -33,9 +33,10 @@ jobs:
           export DYNAWO_RESULTS_SHOW=false
           #sed -i '' 's/-DENABLE_OPENSSL=OFF/-DENABLE_OPENSSL=OFF -DENABLE_ZSTD=OFF/' dynawo/3rdParty/CMakeLists.txt
           #sed -i '' 's/|| error_exit "Copy of.*//' util/envDynawo.sh
-          ./util/envDynawo.sh build-user || echo
-          cat /Users/runner/work/dynawo-test/dynawo-test/dynawo/build/clang11.0.3/master/Debug-cxx11/shared/dynawo/sources/Models/Modelica/P/EventQuadripoleConnection.log
-          exit 1
+          sed -i '' 's/-DCMAKE_SKIP_BUILD_RPATH=True//' dynawo/sources/ModelicaCompiler/DYNCompileModelicaModel.cpp 
+          ./util/envDynawo.sh build-user
+          #cat /Users/runner/work/dynawo-test/dynawo-test/dynawo/build/clang11.0.3/master/Debug-cxx11/shared/dynawo/sources/Models/Modelica/P/EventQuadripoleConnection.log
+          #exit 1
           cd $DYNAWO_INSTALL_OPENMODELICA
           find lib -name "libipopt*" -exec rm -f '{}' \;
           find lib -name "libcoinmumps*" -exec rm -f '{}' \;
