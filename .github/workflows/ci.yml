@@ -47,8 +47,9 @@ jobs:
           # echo
           # otool -l /Users/runner/work/dynawo-test/dynawo-test/dynawo/install/3rdParty/clang11.0.3/shared/Debug-cxx11/adept/lib/libadept.dylib
           # exit 1
-          ./util/envDynawo.sh build-tests
-          ./util/envDynawo.sh nrt
+          #./util/envDynawo.sh build-tests
+          #./util/envDynawo.sh nrt
+          otool -L /Users/runner/work/dynawo-test/dynawo-test/dynawo/install/clang11.0.3/HEAD/Release-cxx11/shared/dynawo/bin/dynawo
           ./util/envDynawo.sh distrib-omc
           version=$(./util/envDynawo.sh version | cut -f1 -d' ')
           asset_id=$(curl -s -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' --request GET https://api.github.com/repos/gautierbureau/dynawo-test/releases/tags/test | grep -B 2 -m 1 Dynawo_MacOS_master.zip | grep '"id"' | awk '{print $2}' | tr -d ',')
