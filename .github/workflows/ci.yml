@@ -32,7 +32,9 @@ jobs:
           export DYNAWO_CXX11_ENABLED=YES
           export DYNAWO_COMPILER=CLANG
           export DYNAWO_RESULTS_SHOW=false
-          ./util/envDynawo.sh build-user
+          ./util/envDynawo.sh build-user || echo
+          cat /Users/runner/work/dynawo-test/dynawo-test/dynawo/build/clang11.0.3/master/Debug-cxx11/shared/dynawo/sources/Models/Modelica/P/EventQuadripoleConnection.log
+          exit 1
           ./util/envDynawo.sh build-tests
           ./util/envDynawo.sh nrt
           ./util/envDynawo.sh distrib-omc
