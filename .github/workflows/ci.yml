@@ -32,8 +32,19 @@ jobs:
           export DYNAWO_CXX11_ENABLED=YES
           export DYNAWO_COMPILER=CLANG
           export DYNAWO_RESULTS_SHOW=false
+          export VERBOSE=1
           ./util/envDynawo.sh build-user || echo
           cat /Users/runner/work/dynawo-test/dynawo-test/dynawo/build/clang11.0.3/master/Debug-cxx11/shared/dynawo/sources/Models/Modelica/P/EventQuadripoleConnection.log
+          echo
+          cat /Users/runner/work/dynawo-test/dynawo-test/dynawo/build/clang11.0.3/master/Debug-cxx11/shared/dynawo/sources/Models/Modelica/P/EventQuadripoleConnection/CMakeFiles/lib.dir/link.txt
+          echo
+          otool -L /Users/runner/work/dynawo-test/dynawo-test/dynawo/build/clang11.0.3/master/Debug-cxx11/shared/dynawo/sources/Models/Modelica/P/EventQuadripoleConnection/EventQuadripoleConnection.dylib
+          echo
+          otool -l /Users/runner/work/dynawo-test/dynawo-test/dynawo/build/clang11.0.3/master/Debug-cxx11/shared/dynawo/sources/Models/Modelica/P/EventQuadripoleConnection/EventQuadripoleConnection.dylib
+          echo
+          otool -L /Users/runner/work/dynawo-test/dynawo-test/dynawo/install/3rdParty/clang11.0.3/shared/Debug-cxx11/adept/lib/libadept.dylib
+          echo
+          otool -l /Users/runner/work/dynawo-test/dynawo-test/dynawo/install/3rdParty/clang11.0.3/shared/Debug-cxx11/adept/lib/libadept.dylib
           exit 1
           ./util/envDynawo.sh build-tests
           ./util/envDynawo.sh nrt
