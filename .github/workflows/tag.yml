@@ -42,7 +42,6 @@ jobs:
           #libZIP::libZIP' dynawo/sources/Simulation/CMakeLists.txt
           cat dynawo/sources/Simulation/CMakeLists.txt
           cat dynawo/sources/Launcher/CMakeLists.txt
-          exit 1
           ./util/envDynawo.sh build-user
           #cat /Users/runner/work/dynawo-test/dynawo-test/dynawo/build/clang11.0.3/master/Debug-cxx11/shared/dynawo/sources/Models/Modelica/P/EventQuadripoleConnection.log
           #exit 1
