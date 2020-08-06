@@ -35,7 +35,8 @@ jobs:
           # export VERBOSE=1
           sed -i '' 's/-DCMAKE_SKIP_BUILD_RPATH=True//' dynawo/sources/ModelicaCompiler/DYNCompileModelicaModel.cpp
           sed -i '' '61d' dynawo/sources/Simulation/CMakeLists.txt
-          sed -i '' '36a libZIP::libZIP' dynawo/sources/Simulation/CMakeLists.txt
+          sed -i '' '36a\
+          libZIP::libZIP' dynawo/sources/Simulation/CMakeLists.txt
           ./util/envDynawo.sh build-user
           # cat /Users/runner/work/dynawo-test/dynawo-test/dynawo/build/clang11.0.3/master/Debug-cxx11/shared/dynawo/sources/Models/Modelica/P/EventQuadripoleConnection.log
           # echo
