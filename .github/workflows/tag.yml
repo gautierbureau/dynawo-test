@@ -42,6 +42,7 @@ jobs:
           #libZIP::libZIP' dynawo/sources/Simulation/CMakeLists.txt
           cat dynawo/sources/Simulation/CMakeLists.txt
           cat dynawo/sources/Launcher/CMakeLists.txt
+          curl -s -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' --request GET https://api.github.com/repos/gautierbureau/dynawo-test/releases/tags/test
           ./util/envDynawo.sh build-user
           #cat /Users/runner/work/dynawo-test/dynawo-test/dynawo/build/clang11.0.3/master/Debug-cxx11/shared/dynawo/sources/Models/Modelica/P/EventQuadripoleConnection.log
           #exit 1
