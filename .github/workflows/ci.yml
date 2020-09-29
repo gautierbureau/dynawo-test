@@ -21,6 +21,7 @@ jobs:
           ln -s /usr/local/bin/gfortran-9 /usr/local/bin/gfortran
           git clone https://github.com/dynawo/dynawo.git
           cd dynawo
+          git checkout 1157_fix_macos
           curl -L https://github.com/gautierbureau/dynawo-macos-omc/releases/download/test/Dynawo-OpenModelica-MacOS.zip -o Dynawo-OpenModelica-MacOS.zip
           unzip Dynawo-OpenModelica-MacOS.zip
           export DYNAWO_HOME=$(pwd)
@@ -33,12 +34,12 @@ jobs:
           export DYNAWO_COMPILER=CLANG
           export DYNAWO_RESULTS_SHOW=false
           # export VERBOSE=1
-          sed -i '' 's/-DCMAKE_SKIP_BUILD_RPATH=True//' dynawo/sources/ModelicaCompiler/DYNCompileModelicaModel.cpp
-          sed -i '' '61d' dynawo/sources/Simulation/CMakeLists.txt
-          sed -i '' '36a\
-          libZIP::libZIP' dynawo/sources/Simulation/CMakeLists.txt
-          cat dynawo/sources/Simulation/CMakeLists.txt
-          cat dynawo/sources/Launcher/CMakeLists.txt
+          #sed -i '' 's/-DCMAKE_SKIP_BUILD_RPATH=True//' dynawo/sources/ModelicaCompiler/DYNCompileModelicaModel.cpp
+          #sed -i '' '61d' dynawo/sources/Simulation/CMakeLists.txt
+          #sed -i '' '36a\
+          #libZIP::libZIP' dynawo/sources/Simulation/CMakeLists.txt
+          #cat dynawo/sources/Simulation/CMakeLists.txt
+          #cat dynawo/sources/Launcher/CMakeLists.txt
           ./util/envDynawo.sh build-user
           # cat /Users/runner/work/dynawo-test/dynawo-test/dynawo/build/clang11.0.3/master/Debug-cxx11/shared/dynawo/sources/Models/Modelica/P/EventQuadripoleConnection.log
           # echo
