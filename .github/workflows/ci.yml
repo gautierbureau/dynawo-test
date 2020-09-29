@@ -30,7 +30,7 @@ jobs:
           export DYNAWO_LOCALE=en_GB
           export DYNAWO_NB_PROCESSORS_USED=1
           export DYNAWO_BUILD_TYPE=Debug
-          export DYNAWO_CXX11_ENABLED=YES
+          export DYNAWO_CXX11_ENABLED=NO
           export DYNAWO_COMPILER=CLANG
           export DYNAWO_RESULTS_SHOW=false
           # export VERBOSE=1
